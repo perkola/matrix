@@ -19,7 +19,7 @@ zero_matrix(N, M, [L|K]) :-
 
 %%  zero_list(+Size, ?List) is det
 %
-%   Generates a m long ling containing only zeros.
+%   Generates a m long list containing only zeros.
 
 zero_list(0, []) :- !.
 zero_list(M, [0|L]) :-
