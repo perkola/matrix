@@ -46,3 +46,9 @@ transpose([_|Rs], Rest, [Rt|At]) :-
 first_column([], [], []).
 first_column([[E|R]|Rs], [E|Acc], [R|Rest]) :-
     first_column(Rs, Acc, Rest).
+
+%%  symmetric(+Matrix) is det
+%   
+%   Checks if matrix equals its transpose.
+
+symmetric(A) :- transpose(A, A).
