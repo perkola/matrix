@@ -49,6 +49,25 @@ first_column([[E|R]|Rs], [E|Acc], [R|Rest]) :-
 
 %%  symmetric(+Matrix) is det
 %   
-%   Checks if matrix equals its transpose.
+%   Checks if matrix equals its transpose with transpose/2.
 
 symmetric(A) :- transpose(A, A).
+
+%%  scalar_matrix_mult(+Scalar, +Matrix, ?Matrix) is det
+%
+%   Multiplies scalar with every element in matrix.
+%   Uses scalar_vector_mult/3 for each row in matrix.
+
+scalar_matrix_mult(_, [], []) :- !.
+scalar_matrix_mult(S, [R|Rs], [A|As]) :-
+    scalar_vector_mult(S, R, A),
+    scalar_matrix_mult(S, Rs, As).
+
+%%  scalar_vector_mult(+Scalar, +Vector, ?Vector) is det
+%
+%   Multiplies scalar with every element in vector.
+
+scalar_vector_mult(_, [], []) :- !.
+scalar_vector_mult(S, [E|R], [E1|A]) :-
+    E1 is S * E,
+    scalar_vector_mult(S, R, A).
