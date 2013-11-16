@@ -71,3 +71,20 @@ scalar_vector_mult(_, [], []) :- !.
 scalar_vector_mult(S, [E|R], [E1|A]) :-
     E1 is S * E,
     scalar_vector_mult(S, R, A).
+
+%%  size(+Matrix, ?Rows, ?Cols) is det
+%
+%   Calculates number of rows and columns in matrix.
+%   Uses size/2 to calculate length of rows and columns.
+
+size([], 0, _).
+size([R|Rs], Rows, Cols) :-
+        size(R, Cols),
+        size([R|Rs], Rows).
+
+%   size(+List, ?Size) is det
+
+size([], 0).
+size([H|T], N) :-
+    size(T, N1),
+    N is N1 + 1.
