@@ -13,6 +13,7 @@ Predicates in matrix.pl (so far)
 * scalar_vector_mult(+Scalar, +Vector, ?Vector)
 * size(+Matrix, ?Rows, ?Cols)
 
-[Coding guidelines for Prolog] [1]
--------------
+Coding guidelines for Prolog
+-------------------------
+I tried to follow [these] [1] guidelines as much as possible.
 [1]: http://www.ai.uga.edu/mc/plcoding.pdf      "plcoding.pdf"
