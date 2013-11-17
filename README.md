@@ -13,6 +13,7 @@ Predicates in matrix.pl (so far)
 * scalar_vector_mult(+Scalar, +Vector, ?Vector)
 * size(+Matrix, ?Rows, ?Cols)
 * valid(+Matrix)
+* add_matrices(+Matrix, +Matrix, ?Matrix)
 
 Coding guidelines for Prolog
 -------------------------

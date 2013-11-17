@@ -63,9 +63,9 @@ scalar_matrix_mult(S, [R|Rs], [A|As]) :-
     scalar_vector_mult(S, R, A),
     scalar_matrix_mult(S, Rs, As).
 
-%%  scalar_vector_mult(+Scalar, +Vector, ?Vector) is det
+%%  scalar_vector_mult(+Scalar, +List, ?List) is det
 %
-%   Multiplies scalar with every element in vector.
+%   Multiplies scalar with every element in list.
 
 scalar_vector_mult(_, [], []) :- !.
 scalar_vector_mult(S, [R|Rs], [R1|A]) :-
@@ -98,3 +98,20 @@ valid([], _).
 valid([A|As], Cols) :-
     length(A, Cols),
     valid(As, Cols).
+
+%%  add_matrices(+Matrix, +Matrix, ?Matrix) is det
+%
+%   Adds given matrices if their dimensions are equal.
+%   Uses add_vectors/3 to perform addition on each row.
+
+add_matrices([], [], []).
+add_matrices([A|As], [B|Bs], [R|Rs]) :-
+    add_vectors(A, B, R),
+    add_matrices(As, Bs, Rs).
+
+%   add_vectors(+List, +List, ?List) is det
+
+add_vectors([], [], []).
+add_vectors([A|As], [B|Bs], [R|Rs]) :-
+    R is A + B,
+    add_vectors(As, Bs, Rs).
